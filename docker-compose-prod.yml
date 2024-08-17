@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  webpacman:
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - "8381:3000"
+    restart: unless-stopped  
+    environment:
+      VIRTUAL_PORT: 3000
+      VIRTUAL_HOST: porting02-demo.bpartnerslab.it
+      LETSENCRYPT_HOST: porting02-demo.bpartnerslab.it
+      LETSENCRYPT_EMAIL: f.girolami@bpartnerslab.it
+    networks:
+      - nbridge
+networks:
+  nbridge:
+    external:
+      name: nbridge

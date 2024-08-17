@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  webpacman:
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - "3009:3000"
+    restart: unless-stopped  
+    networks:
+      - nbridge
+networks:
+  nbridge:
+    external:
+      name: nbridge
